@@ -1,0 +1,138 @@
+﻿@model Entity.NikahSekeriSiparis
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NikahSekeriSiparis</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisTuru)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisTuru)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisVerenAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisVerenAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisVerenTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisVerenTel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisVerenEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisVerenEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisAdet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisAdet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeslimTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeslimTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeslimEdildiMi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeslimEdildiMi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisToplamTutari)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisToplamTutari)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisAlan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisAlan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SekerKodu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SekerKodu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GelinAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GelinAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DamatAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DamatAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SekerYazisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SekerYazisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Not)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Not)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SiparisId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

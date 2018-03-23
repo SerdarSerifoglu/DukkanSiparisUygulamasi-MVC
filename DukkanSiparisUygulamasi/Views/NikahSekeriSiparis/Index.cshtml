@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Entity.NikahSekeriSiparis>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SiparisTuru)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiparisVerenAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiparisVerenTel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiparisVerenEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiparisAdet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiparisTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeslimTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeslimEdildiMi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiparisToplamTutari)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiparisAlan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SekerKodu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GelinAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DamatAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SekerYazisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Not)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiparisTuru)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiparisVerenAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiparisVerenTel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiparisVerenEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiparisAdet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiparisTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeslimTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeslimEdildiMi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiparisToplamTutari)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiparisAlan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SekerKodu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GelinAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DamatAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SekerYazisi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Not)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SiparisId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SiparisId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SiparisId })
+        </td>
+    </tr>
+}
+
+</table>

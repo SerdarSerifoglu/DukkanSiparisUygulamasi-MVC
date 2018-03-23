@@ -1,0 +1,16 @@
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\bin\Debug\DAL.dll.config
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\bin\Debug\DAL.dll
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\bin\Debug\DAL.pdb
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\bin\Debug\Entity.dll
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\bin\Debug\Entity.pdb
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\obj\Debug\DAL.dll
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\obj\Debug\DAL.pdb
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\bin\Debug\Entity.dll.config
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\obj\Debug\DAL.Migrations.kg.resources
+C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
