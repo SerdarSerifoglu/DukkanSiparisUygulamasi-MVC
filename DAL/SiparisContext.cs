@@ -14,6 +14,9 @@ namespace DAL
         {
 
         }
+
+        public static SiparisContext db = new SiparisContext();
+
         public virtual DbSet<BebekSekeriSiparis> BebekSekeriSiparisler { get; set; }
         public virtual DbSet<DavetiyeKatalog> DavetiyeKataloglar { get; set; }
         public virtual DbSet<DavetiyeSiparis> DavetiyeSiparisler { get; set; }

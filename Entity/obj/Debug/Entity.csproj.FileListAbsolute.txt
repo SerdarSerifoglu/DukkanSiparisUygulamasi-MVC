@@ -8,3 +8,15 @@ C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\Entity\bin\Debug\Entit
 C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\Entity\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\Entity\bin\Debug\EntityFramework.xml
 C:\Users\Heil Hitler\source\repos\DukkanSiparisUygulamasi\Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\bin\Debug\Entity.dll.config
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\bin\Debug\Entity.dll
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\bin\Debug\Entity.pdb
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\bin\Debug\EntityFramework.dll
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\bin\Debug\EntityFramework.xml
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\obj\Debug\Entity.csproj.CopyComplete
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\obj\Debug\Entity.dll
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\obj\Debug\Entity.pdb

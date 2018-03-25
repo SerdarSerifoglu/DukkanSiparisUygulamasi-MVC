@@ -13,11 +13,14 @@ namespace Entity
     {
         [Required]
         [MaxLength(250, ErrorMessage = "250 karakterden fazla giriş yapılamaz")]
+        [Display(Name = "Şeker Kodu")]
         public string SekerKodu { get; set; }
         [Required]
         [MaxLength(25, ErrorMessage = "25 karakterden fazla giriş yapılamaz")]
+        [Display(Name = "Çocuğun Adı")]
         public string CocukAdi { get; set; }
         [MaxLength(50, ErrorMessage = "50 karakterden fazla giriş yapılamaz")]
+        [Display(Name = "Etiket Yazısı")]
         public string EtiketeYazilacakYazi { get; set; }
         [MaxLength(250, ErrorMessage = "250 karakterden fazla giriş yapılamaz")]
         public string Not { get; set; }

@@ -15,6 +15,7 @@ namespace Entity
         public int Id { get; set; }
         [Required]
         [MaxLength(25,ErrorMessage ="25 karakterden fazla giriş yapılamaz")]
+        [Display(Name = "Davetiye Katalog Adı")]
         public string KatalogAdi { get; set; }
         public virtual List<DavetiyeSiparis> DavetiyeSiparisleri { get; set; }
         public virtual List<SunnetDavetiyeSiparis> SunnetDavetiyeSiparisleri { get; set; }

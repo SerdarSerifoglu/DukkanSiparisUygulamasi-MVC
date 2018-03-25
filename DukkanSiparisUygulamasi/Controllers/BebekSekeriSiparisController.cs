@@ -8,32 +8,31 @@ using System.Web;
 using System.Web.Mvc;
 using DAL;
 using Entity;
+using static BLL.Repository;
 
 namespace DukkanSiparisUygulamasi.Controllers
 {
     public class BebekSekeriSiparisController : Controller
     {
         private SiparisContext db = new SiparisContext();
-
+        private BebekSekeriSiparisRepository BSSRep = new BebekSekeriSiparisRepository();
         // GET: BebekSekeriSiparis
         public ActionResult Index()
         {
-            return View(db.BebekSekeriSiparisler.ToList());
+             return View(BSSRep.GetAll());
         }
 
         // GET: BebekSekeriSiparis/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BebekSekeriSiparis bebekSekeriSiparis = db.BebekSekeriSiparisler.Find(id);
-            if (bebekSekeriSiparis == null)
+            
+               BSSRep.GetById(id);
+            
+            if (BSSRep.GetById(id) == null)
             {
                 return HttpNotFound();
             }
-            return View(bebekSekeriSiparis);
+            return View(BSSRep.GetById(id));
         }
 
         // GET: BebekSekeriSiparis/Create
