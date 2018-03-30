@@ -20,5 +20,22 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 600px;
 }
+
+textarea.input-lg{
+    width:600px;
+    height:400px;
+}
+
+.form-group{
+    margin-top:10px;
+}
+.siparisbilgi{
+    margin-bottom:50px;
+}
+
+.glyphicon {
+    font-size: xx-small;
+}
+

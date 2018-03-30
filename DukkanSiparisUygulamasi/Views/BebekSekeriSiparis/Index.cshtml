@@ -4,10 +4,12 @@
     ViewBag.Title = "Index";
 }
 
+
+<link href="~/Content/glypicon.css" rel="stylesheet" />
 <h1>Bebek Şekeri Siparişleri</h1>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Yeni Sipariş Oluştur", "SiparisOlustur","",new { @class = "btn btn-warning" })
 </p>
 <table class="table">
     <tr>
@@ -101,11 +103,14 @@
             @Html.DisplayFor(modelItem => item.Not)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SiparisId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SiparisId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SiparisId })
+            @Html.ActionLink(" ", "SiparisDuzenle", new { id=item.SiparisId }, new { @class= "glyphicon glyphicon-edit btn btn-primary btn-md", title="Siparişi Düzenle"}) 
+            @Html.ActionLink(" ", "Detaylar", new { id=item.SiparisId }, new { @class = "glyphicon glyphicon-file btn btn-success btn-md", title = "Siparişi Göster" }) 
+            @Html.ActionLink(" ", "Sil", new { id=item.SiparisId }, new { @class = "glyphicon glyphicon-trash btn btn-danger btn-sm", title = "Siparişi Sil" })
         </td>
     </tr>
 }
 
 </table>
+<script>
+
+</script>

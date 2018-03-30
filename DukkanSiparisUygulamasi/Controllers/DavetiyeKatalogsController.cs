@@ -8,27 +8,24 @@ using System.Web;
 using System.Web.Mvc;
 using DAL;
 using Entity;
+using static BLL.Repository;
 
 namespace DukkanSiparisUygulamasi.Controllers
 {
     public class DavetiyeKatalogsController : Controller
     {
         private SiparisContext db = new SiparisContext();
-
+        private DavetiyeKatalogRepository DKRep = new DavetiyeKatalogRepository();
         // GET: DavetiyeKatalogs
         public ActionResult Index()
         {
-            return View(db.DavetiyeKataloglar.ToList());
+            return View(DKRep.GetAll());
         }
 
-        // GET: DavetiyeKatalogs/Details/5
-        public ActionResult Details(int? id)
+        // GET: DavetiyeKatalogs/Detaylar/5
+        public ActionResult Detaylar(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DavetiyeKatalog davetiyeKatalog = db.DavetiyeKataloglar.Find(id);
+            DavetiyeKatalog davetiyeKatalog = DKRep.GetById(id);
             if (davetiyeKatalog == null)
             {
                 return HttpNotFound();
@@ -36,37 +33,33 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(davetiyeKatalog);
         }
 
-        // GET: DavetiyeKatalogs/Create
-        public ActionResult Create()
+        // GET: DavetiyeKatalogs/KatalogOlustur
+        public ActionResult KatalogOlustur()
         {
             return View();
         }
 
-        // POST: DavetiyeKatalogs/Create
+        // POST: DavetiyeKatalogs/KatalogOlustur
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,KatalogAdi")] DavetiyeKatalog davetiyeKatalog)
+        public ActionResult KatalogOlustur([Bind(Include = "Id,KatalogAdi")] DavetiyeKatalog davetiyeKatalog)
         {
             if (ModelState.IsValid)
             {
-                db.DavetiyeKataloglar.Add(davetiyeKatalog);
-                db.SaveChanges();
+                DKRep.Insert(davetiyeKatalog);
                 return RedirectToAction("Index");
             }
 
             return View(davetiyeKatalog);
         }
 
-        // GET: DavetiyeKatalogs/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: DavetiyeKatalogs/KatalogDuzenle/5
+        public ActionResult KatalogDuzenle(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DavetiyeKatalog davetiyeKatalog = db.DavetiyeKataloglar.Find(id);
+           
+            DavetiyeKatalog davetiyeKatalog = DKRep.GetById(id);
             if (davetiyeKatalog == null)
             {
                 return HttpNotFound();
@@ -74,30 +67,28 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(davetiyeKatalog);
         }
 
-        // POST: DavetiyeKatalogs/Edit/5
+        // POST: DavetiyeKatalogs/KatalogDuzenle/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,KatalogAdi")] DavetiyeKatalog davetiyeKatalog)
+        public ActionResult KatalogDuzenle([Bind(Include = "Id,KatalogAdi")] DavetiyeKatalog davetiyeKatalog)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(davetiyeKatalog).State = EntityState.Modified;
-                db.SaveChanges();
+                DavetiyeKatalog degisenkatalog = DKRep.GetById(davetiyeKatalog.Id);
+                degisenkatalog.KatalogAdi = davetiyeKatalog.KatalogAdi;
+                DKRep.Update(degisenkatalog);
                 return RedirectToAction("Index");
             }
             return View(davetiyeKatalog);
         }
 
-        // GET: DavetiyeKatalogs/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: DavetiyeKatalogs/KatalogSil/5
+        public ActionResult KatalogSil(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DavetiyeKatalog davetiyeKatalog = db.DavetiyeKataloglar.Find(id);
+
+            DavetiyeKatalog davetiyeKatalog = DKRep.GetById(id);
             if (davetiyeKatalog == null)
             {
                 return HttpNotFound();
@@ -105,14 +96,12 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(davetiyeKatalog);
         }
 
-        // POST: DavetiyeKatalogs/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: DavetiyeKatalogs/KatalogSil/5
+        [HttpPost, ActionName("KatalogSil")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DavetiyeKatalog davetiyeKatalog = db.DavetiyeKataloglar.Find(id);
-            db.DavetiyeKataloglar.Remove(davetiyeKatalog);
-            db.SaveChanges();
+            DKRep.Delete(id);
             return RedirectToAction("Index");
         }
 

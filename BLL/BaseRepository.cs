@@ -1,6 +1,7 @@
 ﻿using DAL;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,6 +42,7 @@ namespace BLL
 
         public void Update(T obj)
         {
+           
             SiparisContext.db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
             SiparisContext.db.SaveChanges();
         }

@@ -164,6 +164,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\glypicon.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -203,15 +204,15 @@
     <Content Include="Views\DavetiyeSiparis\Details.cshtml" />
     <Content Include="Views\DavetiyeSiparis\Edit.cshtml" />
     <Content Include="Views\DavetiyeSiparis\Index.cshtml" />
-    <Content Include="Views\BebekSekeriSiparis\Create.cshtml" />
-    <Content Include="Views\BebekSekeriSiparis\Delete.cshtml" />
-    <Content Include="Views\BebekSekeriSiparis\Details.cshtml" />
-    <Content Include="Views\BebekSekeriSiparis\Edit.cshtml" />
+    <Content Include="Views\BebekSekeriSiparis\SiparisOlustur.cshtml" />
+    <Content Include="Views\BebekSekeriSiparis\Sil.cshtml" />
+    <Content Include="Views\BebekSekeriSiparis\Detaylar.cshtml" />
+    <Content Include="Views\BebekSekeriSiparis\SiparisDuzenle.cshtml" />
     <Content Include="Views\BebekSekeriSiparis\Index.cshtml" />
-    <Content Include="Views\DavetiyeKatalogs\Create.cshtml" />
-    <Content Include="Views\DavetiyeKatalogs\Delete.cshtml" />
-    <Content Include="Views\DavetiyeKatalogs\Details.cshtml" />
-    <Content Include="Views\DavetiyeKatalogs\Edit.cshtml" />
+    <Content Include="Views\DavetiyeKatalogs\KatalogOlustur.cshtml" />
+    <Content Include="Views\DavetiyeKatalogs\KatalogSil.cshtml" />
+    <Content Include="Views\DavetiyeKatalogs\Detaylar.cshtml" />
+    <Content Include="Views\DavetiyeKatalogs\KatalogDuzenle.cshtml" />
     <Content Include="Views\DavetiyeKatalogs\Index.cshtml" />
     <Content Include="Views\DigerSiparis\Create.cshtml" />
     <Content Include="Views\DigerSiparis\Delete.cshtml" />

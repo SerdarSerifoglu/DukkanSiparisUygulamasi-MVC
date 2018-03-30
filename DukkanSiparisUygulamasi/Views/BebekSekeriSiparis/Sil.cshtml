@@ -1,13 +1,14 @@
 ﻿@model Entity.BebekSekeriSiparis
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Bebek Şekeri Sipariş Sil";
 }
 
-<h2>Details</h2>
+<h2>Sipariş Sil</h2>
 
+<h3>Siparişi silmek istediğine emin misin?</h3>
 <div>
-    <h4>BebekSekeriSiparis</h4>
+    <h4>Bebek Şekeri Siparişi</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -123,8 +124,13 @@
         </dd>
 
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Siparişi Sil" class="btn btn-danger btn-md" /> |
+            @Html.ActionLink("Sipariş Listesine Dön", "Index")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SiparisId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -1,18 +1,16 @@
 ﻿@model Entity.BebekSekeriSiparis
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Detaylar";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>BebekSekeriSiparis</h4>
+    <h4>Bebek Şekeri Sipariş</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.SiparisTuru)
+            @Html.DisplayNameFor(model=>model.SiparisTuru)
         </dt>
 
         <dd>
@@ -124,13 +122,8 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
 </div>
+<p>
+    @Html.ActionLink("Düzenle", "SiparisDuzenle", new { id = Model.SiparisId },new { @class="btn btn-primary"}) |
+    @Html.ActionLink("Sipariş Listesine Dön", "Index","", new { @class = "btn btn-info" })
+</p>

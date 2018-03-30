@@ -22,8 +22,8 @@ namespace DukkanSiparisUygulamasi.Controllers
              return View(BSSRep.GetAll());
         }
 
-        // GET: BebekSekeriSiparis/Details/5
-        public ActionResult Details(int id)
+        // GET: BebekSekeriSiparis/Detaylar/5
+        public ActionResult Detaylar(int id)
         {
             
                BSSRep.GetById(id);
@@ -35,37 +35,33 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(BSSRep.GetById(id));
         }
 
-        // GET: BebekSekeriSiparis/Create
-        public ActionResult Create()
+        // GET: BebekSekeriSiparis/SiparisOlustur
+        public ActionResult SiparisOlustur()
         {
             return View();
         }
 
-        // POST: BebekSekeriSiparis/Create
+        // POST: BebekSekeriSiparis/SiparisOlustur
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,SekerKodu,CocukAdi,EtiketeYazilacakYazi,Not")] BebekSekeriSiparis bebekSekeriSiparis)
+        public ActionResult SiparisOlustur([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,SekerKodu,CocukAdi,EtiketeYazilacakYazi,Not")] BebekSekeriSiparis bebekSekeriSiparis)
         {
             if (ModelState.IsValid)
             {
-                db.Siparisler.Add(bebekSekeriSiparis);
-                db.SaveChanges();
+                BSSRep.Insert(bebekSekeriSiparis);
+                //db.Siparisler.Add(bebekSekeriSiparis);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(bebekSekeriSiparis);
         }
 
-        // GET: BebekSekeriSiparis/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: BebekSekeriSiparis/SiparisDuzenle/5
+        public ActionResult SiparisDuzenle(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BebekSekeriSiparis bebekSekeriSiparis = db.BebekSekeriSiparisler.Find(id);
+            BebekSekeriSiparis bebekSekeriSiparis = BSSRep.GetById(id);
             if (bebekSekeriSiparis == null)
             {
                 return HttpNotFound();
@@ -73,30 +69,42 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(bebekSekeriSiparis);
         }
 
-        // POST: BebekSekeriSiparis/Edit/5
+        // POST: BebekSekeriSiparis/SiparisDuzenle/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,SekerKodu,CocukAdi,EtiketeYazilacakYazi,Not")] BebekSekeriSiparis bebekSekeriSiparis)
+        public ActionResult SiparisDuzenle([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,SekerKodu,CocukAdi,EtiketeYazilacakYazi,Not")] BebekSekeriSiparis bebekSekeriSiparis)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(bebekSekeriSiparis).State = EntityState.Modified;
-                db.SaveChanges();
+                BebekSekeriSiparis degisenSiparis = BSSRep.GetById(bebekSekeriSiparis.SiparisId);
+                degisenSiparis.SiparisTuru = bebekSekeriSiparis.SiparisTuru;
+                degisenSiparis.SiparisVerenAdi = bebekSekeriSiparis.SiparisVerenAdi;
+                degisenSiparis.SiparisVerenTel = bebekSekeriSiparis.SiparisVerenTel;
+                degisenSiparis.SiparisVerenEmail = bebekSekeriSiparis.SiparisVerenEmail;
+                degisenSiparis.SiparisAdet = bebekSekeriSiparis.SiparisAdet;
+                degisenSiparis.SiparisTarihi = bebekSekeriSiparis.SiparisTarihi;
+                degisenSiparis.TeslimTarihi = bebekSekeriSiparis.TeslimTarihi;
+                degisenSiparis.TeslimEdildiMi = bebekSekeriSiparis.TeslimEdildiMi;
+                degisenSiparis.SiparisToplamTutari = bebekSekeriSiparis.SiparisToplamTutari;
+                degisenSiparis.SiparisAlan = bebekSekeriSiparis.SiparisAlan;
+                degisenSiparis.SekerKodu = bebekSekeriSiparis.SekerKodu;
+                degisenSiparis.CocukAdi = bebekSekeriSiparis.CocukAdi;
+                degisenSiparis.EtiketeYazilacakYazi = bebekSekeriSiparis.EtiketeYazilacakYazi;
+                degisenSiparis.Not = bebekSekeriSiparis.Not;
+                BSSRep.Update(degisenSiparis);
+                //db.Entry(bebekSekeriSiparis).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(bebekSekeriSiparis);
         }
 
-        // GET: BebekSekeriSiparis/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: BebekSekeriSiparis/Sil/5
+        public ActionResult Sil(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BebekSekeriSiparis bebekSekeriSiparis = db.BebekSekeriSiparisler.Find(id);
+            BebekSekeriSiparis bebekSekeriSiparis = BSSRep.GetById(id);
             if (bebekSekeriSiparis == null)
             {
                 return HttpNotFound();
@@ -104,14 +112,12 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(bebekSekeriSiparis);
         }
 
-        // POST: BebekSekeriSiparis/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: BebekSekeriSiparis/Sil/5
+        [HttpPost, ActionName("Sil")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            BebekSekeriSiparis bebekSekeriSiparis = db.BebekSekeriSiparisler.Find(id);
-            db.Siparisler.Remove(bebekSekeriSiparis);
-            db.SaveChanges();
+            BSSRep.Delete(id);
             return RedirectToAction("Index");
         }
 
