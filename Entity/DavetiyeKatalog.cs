@@ -11,8 +11,13 @@ namespace Entity
     [Table("DavetiyeKataloglari")]
    public class DavetiyeKatalog
     {
+        public DavetiyeKatalog()
+        {
+            DavetiyeSiparisleri = new List<DavetiyeSiparis>();
+            SunnetDavetiyeSiparisleri = new List<SunnetDavetiyeSiparis>(); 
+        }
         [Key]
-        public int Id { get; set; }
+        public int KatalogId { get; set; }
         [Required]
         [MaxLength(25,ErrorMessage ="25 karakterden fazla giriş yapılamaz")]
         [Display(Name = "Davetiye Katalog Adı")]

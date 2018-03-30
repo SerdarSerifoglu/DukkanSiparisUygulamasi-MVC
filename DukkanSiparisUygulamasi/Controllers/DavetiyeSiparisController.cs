@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using DAL;
 using Entity;
+using static BLL.Repository;
 
 namespace DukkanSiparisUygulamasi.Controllers
 {
@@ -15,20 +16,19 @@ namespace DukkanSiparisUygulamasi.Controllers
     {
         private SiparisContext db = new SiparisContext();
 
+        private DavetiyeSiparisRepository DSRep = new DavetiyeSiparisRepository();
+        private DavetiyeKatalogRepository DKRep = new DavetiyeKatalogRepository();
+
         // GET: DavetiyeSiparis
         public ActionResult Index()
         {
-            return View(db.DavetiyeSiparisler.ToList());
+            return View(DSRep.GetAll());
         }
 
-        // GET: DavetiyeSiparis/Details/5
-        public ActionResult Details(int? id)
+        // GET: DavetiyeSiparis/Detaylar/5
+        public ActionResult Detaylar(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DavetiyeSiparis davetiyeSiparis = db.DavetiyeSiparisler.Find(id);
+            DavetiyeSiparis davetiyeSiparis = DSRep.GetById(id);
             if (davetiyeSiparis == null)
             {
                 return HttpNotFound();
@@ -36,37 +36,35 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(davetiyeSiparis);
         }
 
-        // GET: DavetiyeSiparis/Create
-        public ActionResult Create()
+        // GET: DavetiyeSiparis/SiparisOlustur
+        public ActionResult SiparisOlustur()
         {
+            ViewBag.KatalogId = new SelectList (DKRep.GetAll(),"KatalogId","KatalogAdi") ;
             return View();
         }
 
-        // POST: DavetiyeSiparis/Create
+        // POST: DavetiyeSiparis/SiparisOlustur
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,DavetiyeKodu,GelinAdi,DamatAdi,GelininAnneAdi,GelininAnneSoyadi,GelininBabaAdi,GelininBabaSoyadi,DamadinAnneAdi,DamadinAnneSoyadi,DamadinBabaAdi,DamadinBabaSoyadi,DavetiyeYazisi,TorenTarihi,TorenSaati,AdresBilgileri,Not")] DavetiyeSiparis davetiyeSiparis)
+        public ActionResult SiparisOlustur([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,KatalogId,DavetiyeKodu,GelinAdi,DamatAdi,GelininAnneAdi,GelininAnneSoyadi,GelininBabaAdi,GelininBabaSoyadi,DamadinAnneAdi,DamadinAnneSoyadi,DamadinBabaAdi,DamadinBabaSoyadi,DavetiyeYazisi,TorenTarihi,TorenSaati,AdresBilgileri,Not")] DavetiyeSiparis davetiyeSiparis)
         {
             if (ModelState.IsValid)
             {
-                db.Siparisler.Add(davetiyeSiparis);
-                db.SaveChanges();
+                ViewBag.KatalogId = new SelectList(DKRep.GetAll(), "KatalogId", "KatalogAdi",davetiyeSiparis.KatalogId);
+                DSRep.Insert(davetiyeSiparis);
                 return RedirectToAction("Index");
             }
 
             return View(davetiyeSiparis);
         }
 
-        // GET: DavetiyeSiparis/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: DavetiyeSiparis/SiparisDuzenle/5
+        public ActionResult SiparisDuzenle(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DavetiyeSiparis davetiyeSiparis = db.DavetiyeSiparisler.Find(id);
+
+            DavetiyeSiparis davetiyeSiparis = DSRep.GetById(id);
             if (davetiyeSiparis == null)
             {
                 return HttpNotFound();
@@ -74,30 +72,26 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(davetiyeSiparis);
         }
 
-        // POST: DavetiyeSiparis/Edit/5
+        // POST: DavetiyeSiparis/SiparisDuzenle/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,DavetiyeKodu,GelinAdi,DamatAdi,GelininAnneAdi,GelininAnneSoyadi,GelininBabaAdi,GelininBabaSoyadi,DamadinAnneAdi,DamadinAnneSoyadi,DamadinBabaAdi,DamadinBabaSoyadi,DavetiyeYazisi,TorenTarihi,TorenSaati,AdresBilgileri,Not")] DavetiyeSiparis davetiyeSiparis)
+        public ActionResult SiparisDuzenle([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,DavetiyeKodu,GelinAdi,DamatAdi,GelininAnneAdi,GelininAnneSoyadi,GelininBabaAdi,GelininBabaSoyadi,DamadinAnneAdi,DamadinAnneSoyadi,DamadinBabaAdi,DamadinBabaSoyadi,DavetiyeYazisi,TorenTarihi,TorenSaati,AdresBilgileri,Not")] DavetiyeSiparis davetiyeSiparis)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(davetiyeSiparis).State = EntityState.Modified;
-                db.SaveChanges();
+                DSRep.Update(davetiyeSiparis);
                 return RedirectToAction("Index");
             }
             return View(davetiyeSiparis);
         }
 
-        // GET: DavetiyeSiparis/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: DavetiyeSiparis/Sil/5
+        public ActionResult Sil(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DavetiyeSiparis davetiyeSiparis = db.DavetiyeSiparisler.Find(id);
+            
+            DavetiyeSiparis davetiyeSiparis = DSRep.GetById(id);
             if (davetiyeSiparis == null)
             {
                 return HttpNotFound();
@@ -106,13 +100,11 @@ namespace DukkanSiparisUygulamasi.Controllers
         }
 
         // POST: DavetiyeSiparis/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Sil")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DavetiyeSiparis davetiyeSiparis = db.DavetiyeSiparisler.Find(id);
-            db.Siparisler.Remove(davetiyeSiparis);
-            db.SaveChanges();
+            DSRep.Delete(id);
             return RedirectToAction("Index");
         }
 

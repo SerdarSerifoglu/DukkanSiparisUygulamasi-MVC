@@ -1,14 +1,14 @@
 ﻿@model Entity.DavetiyeSiparis
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Davetiye Sipariş Sil";
 }
 
-<h2>Delete</h2>
+<h2>Davetiye Sipariş Sil</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Bu siparişi silmek istediğine emin misin?</h3>
 <div>
-    <h4>DavetiyeSiparis</h4>
+   
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -225,8 +225,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Siparişi Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Davetiye Sipariş Listesine Dön", "Index")
         </div>
     }
 </div>

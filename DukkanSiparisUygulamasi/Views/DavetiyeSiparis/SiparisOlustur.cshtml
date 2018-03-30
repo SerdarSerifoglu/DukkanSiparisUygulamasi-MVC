@@ -1,20 +1,28 @@
 ﻿@model Entity.DavetiyeSiparis
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Davetiye Siparişi Oluştur";
 }
-
-<h2>Create</h2>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<h2>Davetiye Siparişi Oluştur</h2>
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>DavetiyeSiparis</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-horizontal">
+    <h4>Davetiye Sipariş Kayıt Ekranı</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.LabelFor(model => model.KatalogId, "Davetiye Kataloğu:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("KatalogId", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.SiparisTuru, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -46,7 +54,8 @@
                 @Html.ValidationMessageFor(model => model.SiparisVerenEmail, "", new { @class = "text-danger" })
             </div>
         </div>
-
+    </div>
+    <div class="col-md-6">
         <div class="form-group">
             @Html.LabelFor(model => model.SiparisAdet, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -71,7 +80,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.TeslimEdildiMi, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
@@ -79,7 +88,7 @@
                     @Html.ValidationMessageFor(model => model.TeslimEdildiMi, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.SiparisToplamTutari, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -96,7 +105,8 @@
                 @Html.ValidationMessageFor(model => model.SiparisAlan, "", new { @class = "text-danger" })
             </div>
         </div>
-
+    </div>
+    <div class="col-md-6">
         <div class="form-group">
             @Html.LabelFor(model => model.DavetiyeKodu, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -186,9 +196,19 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Not, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Not, new { @class = "input-lg" })
+                @Html.ValidationMessageFor(model => model.Not, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
             @Html.LabelFor(model => model.DavetiyeYazisi, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DavetiyeYazisi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.DavetiyeYazisi, new { @class = "input-lg" })
                 @Html.ValidationMessageFor(model => model.DavetiyeYazisi, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -212,29 +232,24 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AdresBilgileri, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AdresBilgileri, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.AdresBilgileri, new { @class = "input-lg" })
                 @Html.ValidationMessageFor(model => model.AdresBilgileri, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Not, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Not, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Not, "", new { @class = "text-danger" })
-            </div>
-        </div>
+       
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Sipariş Oluştur" class="btn btn-success btn-lg" />
         </div>
     </div>
+</div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sipariş Listesine Geri Dön", "Index")
 </div>
 
 @section Scripts {

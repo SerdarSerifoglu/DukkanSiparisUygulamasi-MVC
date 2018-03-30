@@ -29,5 +29,5 @@ C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.dll
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.pdb
-C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.Migrations.s.resources
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.Migrations.yenidb.resources
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.csproj.GenerateResource.cache

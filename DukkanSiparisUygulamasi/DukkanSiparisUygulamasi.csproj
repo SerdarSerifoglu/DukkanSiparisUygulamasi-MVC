@@ -199,10 +199,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\DavetiyeSiparis\Create.cshtml" />
-    <Content Include="Views\DavetiyeSiparis\Delete.cshtml" />
-    <Content Include="Views\DavetiyeSiparis\Details.cshtml" />
-    <Content Include="Views\DavetiyeSiparis\Edit.cshtml" />
+    <Content Include="Views\DavetiyeSiparis\SiparisOlustur.cshtml" />
+    <Content Include="Views\DavetiyeSiparis\Sil.cshtml" />
+    <Content Include="Views\DavetiyeSiparis\Detaylar.cshtml" />
+    <Content Include="Views\DavetiyeSiparis\SiparisDuzenle.cshtml" />
     <Content Include="Views\DavetiyeSiparis\Index.cshtml" />
     <Content Include="Views\BebekSekeriSiparis\SiparisOlustur.cshtml" />
     <Content Include="Views\BebekSekeriSiparis\Sil.cshtml" />

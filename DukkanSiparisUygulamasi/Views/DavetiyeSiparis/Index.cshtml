@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Entity.DavetiyeSiparis>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Davetiye Sipariş";
 }
 
-<h2>Index</h2>
+<h2>Davetiye Siparişleri</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Yeni Sipariş Oluştur", "SiparisOlustur","",new {@class="btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -40,6 +40,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SiparisAlan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=>model.KatalogId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DavetiyeKodu)
@@ -125,6 +128,9 @@
             @Html.DisplayFor(modelItem => item.SiparisAlan)
         </td>
         <td>
+            @Html.DisplayFor(modelItem=>item.DavetiyeKatalog.KatalogAdi)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.DavetiyeKodu)
         </td>
         <td>
@@ -173,9 +179,9 @@
             @Html.DisplayFor(modelItem => item.Not)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SiparisId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SiparisId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SiparisId })
+            @Html.ActionLink(" ", "SiparisDuzenle", new { id = item.SiparisId }, new { @class = "glyphicon glyphicon-edit btn btn-primary btn-md", title = "Siparişi Düzenle" })
+            @Html.ActionLink(" ", "Detaylar", new { id = item.SiparisId }, new { @class = "glyphicon glyphicon-file btn btn-success btn-md", title = "Siparişi Göster" })
+            @Html.ActionLink(" ", "Sil", new { id = item.SiparisId }, new { @class = "glyphicon glyphicon-trash btn btn-danger btn-sm", title = "Siparişi Sil" })
         </td>
     </tr>
 }
