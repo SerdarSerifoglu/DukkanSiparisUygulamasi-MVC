@@ -81,6 +81,7 @@ C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DukkanSiparisUygul
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DukkanSiparisUygulamasi\bin\System.Web.WebPages.Razor.dll
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DukkanSiparisUygulamasi\bin\WebGrease.dll
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DukkanSiparisUygulamasi\bin\BLL.pdb
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DukkanSiparisUygulamasi\bin\BLL.dll.config
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DukkanSiparisUygulamasi\bin\DAL.pdb
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DukkanSiparisUygulamasi\bin\DAL.dll.config
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DukkanSiparisUygulamasi\bin\Entity.pdb
@@ -107,4 +108,3 @@ C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DukkanSiparisUygul
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DukkanSiparisUygulamasi\obj\Debug\DukkanSiparisUygulamasi.csproj.CopyComplete
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DukkanSiparisUygulamasi\obj\Debug\DukkanSiparisUygulamasi.dll
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DukkanSiparisUygulamasi\obj\Debug\DukkanSiparisUygulamasi.pdb
-C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DukkanSiparisUygulamasi\bin\BLL.dll.config

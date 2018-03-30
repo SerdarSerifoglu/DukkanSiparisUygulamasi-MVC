@@ -40,7 +40,7 @@ namespace BLL
             SiparisContext.db.SaveChanges();
         }
 
-        public virtual void Update(T obj)
+        public void Update(T obj)
         {
            
             SiparisContext.db.Entry(obj).State = System.Data.Entity.EntityState.Modified;

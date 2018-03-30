@@ -20,7 +20,7 @@
 input,
 select,
 textarea {
-    max-width: 400px;
+    max-width: 600px;
 }
 
 textarea.input-lg{
@@ -39,6 +39,3 @@ textarea.input-lg{
     font-size: xx-small;
 }
 
-.buttton{
-    right:
-}

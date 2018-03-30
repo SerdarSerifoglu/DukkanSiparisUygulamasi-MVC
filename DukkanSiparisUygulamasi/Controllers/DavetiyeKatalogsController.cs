@@ -76,7 +76,9 @@ namespace DukkanSiparisUygulamasi.Controllers
         {
             if (ModelState.IsValid)
             {
-                DKRep.Update(davetiyeKatalog);
+                DavetiyeKatalog degisenkatalog = DKRep.GetById(davetiyeKatalog.Id);
+                degisenkatalog.KatalogAdi = davetiyeKatalog.KatalogAdi;
+                DKRep.Update(degisenkatalog);
                 return RedirectToAction("Index");
             }
             return View(davetiyeKatalog);

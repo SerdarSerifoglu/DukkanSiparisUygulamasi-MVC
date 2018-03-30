@@ -25,6 +25,7 @@ namespace DukkanSiparisUygulamasi.Controllers
         // GET: BebekSekeriSiparis/Detaylar/5
         public ActionResult Detaylar(int id)
         {
+            
                BSSRep.GetById(id);
             
             if (BSSRep.GetById(id) == null)
@@ -50,6 +51,8 @@ namespace DukkanSiparisUygulamasi.Controllers
             if (ModelState.IsValid)
             {
                 BSSRep.Insert(bebekSekeriSiparis);
+                //db.Siparisler.Add(bebekSekeriSiparis);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(bebekSekeriSiparis);
@@ -75,7 +78,24 @@ namespace DukkanSiparisUygulamasi.Controllers
         {
             if (ModelState.IsValid)
             {
-                BSSRep.Update(bebekSekeriSiparis);
+                BebekSekeriSiparis degisenSiparis = BSSRep.GetById(bebekSekeriSiparis.SiparisId);
+                degisenSiparis.SiparisTuru = bebekSekeriSiparis.SiparisTuru;
+                degisenSiparis.SiparisVerenAdi = bebekSekeriSiparis.SiparisVerenAdi;
+                degisenSiparis.SiparisVerenTel = bebekSekeriSiparis.SiparisVerenTel;
+                degisenSiparis.SiparisVerenEmail = bebekSekeriSiparis.SiparisVerenEmail;
+                degisenSiparis.SiparisAdet = bebekSekeriSiparis.SiparisAdet;
+                degisenSiparis.SiparisTarihi = bebekSekeriSiparis.SiparisTarihi;
+                degisenSiparis.TeslimTarihi = bebekSekeriSiparis.TeslimTarihi;
+                degisenSiparis.TeslimEdildiMi = bebekSekeriSiparis.TeslimEdildiMi;
+                degisenSiparis.SiparisToplamTutari = bebekSekeriSiparis.SiparisToplamTutari;
+                degisenSiparis.SiparisAlan = bebekSekeriSiparis.SiparisAlan;
+                degisenSiparis.SekerKodu = bebekSekeriSiparis.SekerKodu;
+                degisenSiparis.CocukAdi = bebekSekeriSiparis.CocukAdi;
+                degisenSiparis.EtiketeYazilacakYazi = bebekSekeriSiparis.EtiketeYazilacakYazi;
+                degisenSiparis.Not = bebekSekeriSiparis.Not;
+                BSSRep.Update(degisenSiparis);
+                //db.Entry(bebekSekeriSiparis).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(bebekSekeriSiparis);

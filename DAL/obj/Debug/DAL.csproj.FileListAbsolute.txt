@@ -25,9 +25,9 @@ C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\bin\Debug\Enti
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\bin\Debug\EntityFramework.xml
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.Migrations.s.resources
+C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.dll
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.pdb
-C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.Migrations.yenidb.resources
-C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\DAL\obj\Debug\DAL.csproj.GenerateResource.cache

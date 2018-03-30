@@ -19,4 +19,3 @@ C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\obj\Debug\E
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\obj\Debug\Entity.csproj.CopyComplete
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\obj\Debug\Entity.dll
 C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\obj\Debug\Entity.pdb
-C:\Users\Heil Hitler\Source\Repos\DukkanSiparisUygulamasi-MVC\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache

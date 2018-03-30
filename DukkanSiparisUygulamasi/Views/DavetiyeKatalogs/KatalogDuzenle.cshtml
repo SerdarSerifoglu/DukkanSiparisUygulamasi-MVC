@@ -1,10 +1,10 @@
 ﻿@model Entity.DavetiyeKatalog
 
 @{
-    ViewBag.Title = "Katalog Düzenle";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Katalog Düzenle</h2>
+<h2>Edit</h2>
 
 
 @using (Html.BeginForm())
@@ -27,15 +27,15 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Kataloğu Kaydet" class="btn btn-success" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
-    <div>
-        @Html.ActionLink("Katalog Listesine Dön", "Index")
-    </div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
