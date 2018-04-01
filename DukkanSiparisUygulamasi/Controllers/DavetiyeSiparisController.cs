@@ -21,8 +21,8 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(db.DavetiyeSiparisler.ToList());
         }
 
-        // GET: DavetiyeSiparis/Details/5
-        public ActionResult Details(int? id)
+        // GET: DavetiyeSiparis/Detaylar/5
+        public ActionResult Detaylar(int? id)
         {
             if (id == null)
             {
@@ -36,18 +36,18 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(davetiyeSiparis);
         }
 
-        // GET: DavetiyeSiparis/Create
-        public ActionResult Create()
+        // GET: DavetiyeSiparis/SiparisOlustur
+        public ActionResult SiparisOlustur()
         {
             return View();
         }
 
-        // POST: DavetiyeSiparis/Create
+        // POST: DavetiyeSiparis/SiparisOlustur
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,DavetiyeKodu,GelinAdi,DamatAdi,GelininAnneAdi,GelininAnneSoyadi,GelininBabaAdi,GelininBabaSoyadi,DamadinAnneAdi,DamadinAnneSoyadi,DamadinBabaAdi,DamadinBabaSoyadi,DavetiyeYazisi,TorenTarihi,TorenSaati,AdresBilgileri,Not")] DavetiyeSiparis davetiyeSiparis)
+        public ActionResult SiparisOlustur([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,DavetiyeKodu,GelinAdi,DamatAdi,GelininAnneAdi,GelininAnneSoyadi,GelininBabaAdi,GelininBabaSoyadi,DamadinAnneAdi,DamadinAnneSoyadi,DamadinBabaAdi,DamadinBabaSoyadi,DavetiyeYazisi,TorenTarihi,TorenSaati,AdresBilgileri,Not")] DavetiyeSiparis davetiyeSiparis)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +59,8 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(davetiyeSiparis);
         }
 
-        // GET: DavetiyeSiparis/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: DavetiyeSiparis/SiparisDuzenle/5
+        public ActionResult SiparisDuzenle(int? id)
         {
             if (id == null)
             {
@@ -74,12 +74,12 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(davetiyeSiparis);
         }
 
-        // POST: DavetiyeSiparis/Edit/5
+        // POST: DavetiyeSiparis/SiparisDuzenle/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,DavetiyeKodu,GelinAdi,DamatAdi,GelininAnneAdi,GelininAnneSoyadi,GelininBabaAdi,GelininBabaSoyadi,DamadinAnneAdi,DamadinAnneSoyadi,DamadinBabaAdi,DamadinBabaSoyadi,DavetiyeYazisi,TorenTarihi,TorenSaati,AdresBilgileri,Not")] DavetiyeSiparis davetiyeSiparis)
+        public ActionResult SiparisDuzenle([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,DavetiyeKodu,GelinAdi,DamatAdi,GelininAnneAdi,GelininAnneSoyadi,GelininBabaAdi,GelininBabaSoyadi,DamadinAnneAdi,DamadinAnneSoyadi,DamadinBabaAdi,DamadinBabaSoyadi,DavetiyeYazisi,TorenTarihi,TorenSaati,AdresBilgileri,Not")] DavetiyeSiparis davetiyeSiparis)
         {
             if (ModelState.IsValid)
             {
@@ -90,8 +90,8 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(davetiyeSiparis);
         }
 
-        // GET: DavetiyeSiparis/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: DavetiyeSiparis/Sil/5
+        public ActionResult Sil(int? id)
         {
             if (id == null)
             {
@@ -105,8 +105,8 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(davetiyeSiparis);
         }
 
-        // POST: DavetiyeSiparis/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: DavetiyeSiparis/Sil/5
+        [HttpPost, ActionName("Sil")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
