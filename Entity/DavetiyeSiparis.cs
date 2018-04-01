@@ -11,9 +11,9 @@ namespace Entity
     [Table("DavetiyeSiparisleri")]
     public class DavetiyeSiparis : Siparis
     {
-        //[ForeignKey("DavetiyeKatalog")]
-        //public int KatalogId { get; set; }
-        public virtual DavetiyeKatalog DavetiyeKatalogu { get; set; }
+        [ForeignKey("DavetiyeKatalog")]
+        public int KatalogId { get; set; }
+        public virtual DavetiyeKatalog DavetiyeKatalog { get; set; }
         [Required]
         [MaxLength(10, ErrorMessage = "10 karakterden fazla giriş yapılamaz")]
         [Display(Name ="Davetiye Kodu")]

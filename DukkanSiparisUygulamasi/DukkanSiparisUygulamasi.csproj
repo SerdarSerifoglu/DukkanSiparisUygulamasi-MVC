@@ -229,11 +229,15 @@
     <Content Include="Views\SunnetSekeriSiparis\Details.cshtml" />
     <Content Include="Views\SunnetSekeriSiparis\Edit.cshtml" />
     <Content Include="Views\SunnetSekeriSiparis\Index.cshtml" />
+    <Content Include="Views\DavetiyeSiparis\Detaylar.cshtml" />
+    <Content Include="Views\DavetiyeSiparis\Sil.cshtml" />
+    <Content Include="Views\DavetiyeSiparis\SiparisDuzenle.cshtml" />
+    <Content Include="Views\DavetiyeSiparis\SiparisOlustur.cshtml" />
+    <Content Include="Views\DavetiyeSiparis\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\DavetiyeSiparis\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
