@@ -8,27 +8,26 @@ using System.Web;
 using System.Web.Mvc;
 using DAL;
 using Entity;
+using static BLL.Repository;
 
 namespace DukkanSiparisUygulamasi.Controllers
 {
     public class SunnetSekeriSiparisController : Controller
     {
         private SiparisContext db = new SiparisContext();
+        private SunnetSekeriSiparisRepository SSRep = new SunnetSekeriSiparisRepository();
 
         // GET: SunnetSekeriSiparis
         public ActionResult Index()
         {
-            return View(db.SunnetSekeriSiparisler.ToList());
+            return View(SSRep.GetAll());
         }
 
-        // GET: SunnetSekeriSiparis/Details/5
-        public ActionResult Details(int? id)
+        // GET: SunnetSekeriSiparis/Detaylar/5
+        public ActionResult Detaylar(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SunnetSekeriSiparis sunnetSekeriSiparis = db.SunnetSekeriSiparisler.Find(id);
+
+            SunnetSekeriSiparis sunnetSekeriSiparis = SSRep.GetById(id);
             if (sunnetSekeriSiparis == null)
             {
                 return HttpNotFound();
@@ -36,37 +35,32 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(sunnetSekeriSiparis);
         }
 
-        // GET: SunnetSekeriSiparis/Create
-        public ActionResult Create()
+        // GET: SunnetSekeriSiparis/SiparisOlustur
+        public ActionResult SiparisOlustur()
         {
             return View();
         }
 
-        // POST: SunnetSekeriSiparis/Create
+        // POST: SunnetSekeriSiparis/SiparisOlustur
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,SekerKodu,CocukAdi,EtiketeYazilacakYazi,Not")] SunnetSekeriSiparis sunnetSekeriSiparis)
+        public ActionResult SiparisOlustur([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,SekerKodu,CocukAdi,EtiketeYazilacakYazi,Not")] SunnetSekeriSiparis sunnetSekeriSiparis)
         {
             if (ModelState.IsValid)
             {
-                db.Siparisler.Add(sunnetSekeriSiparis);
-                db.SaveChanges();
+                SSRep.Insert(sunnetSekeriSiparis);
                 return RedirectToAction("Index");
             }
 
             return View(sunnetSekeriSiparis);
         }
 
-        // GET: SunnetSekeriSiparis/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: SunnetSekeriSiparis/SiparisDuzenle/5
+        public ActionResult SiparisDuzenle(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SunnetSekeriSiparis sunnetSekeriSiparis = db.SunnetSekeriSiparisler.Find(id);
+            SunnetSekeriSiparis sunnetSekeriSiparis = SSRep.GetById(id);
             if (sunnetSekeriSiparis == null)
             {
                 return HttpNotFound();
@@ -74,30 +68,26 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(sunnetSekeriSiparis);
         }
 
-        // POST: SunnetSekeriSiparis/Edit/5
+        // POST: SunnetSekeriSiparis/SiparisDuzenle/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,SekerKodu,CocukAdi,EtiketeYazilacakYazi,Not")] SunnetSekeriSiparis sunnetSekeriSiparis)
+        public ActionResult SiparisDuzenle([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,SekerKodu,CocukAdi,EtiketeYazilacakYazi,Not")] SunnetSekeriSiparis sunnetSekeriSiparis)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sunnetSekeriSiparis).State = EntityState.Modified;
-                db.SaveChanges();
+                SSRep.Update(sunnetSekeriSiparis);
                 return RedirectToAction("Index");
             }
             return View(sunnetSekeriSiparis);
         }
 
         // GET: SunnetSekeriSiparis/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Sil(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SunnetSekeriSiparis sunnetSekeriSiparis = db.SunnetSekeriSiparisler.Find(id);
+            
+            SunnetSekeriSiparis sunnetSekeriSiparis = SSRep.GetById(id);
             if (sunnetSekeriSiparis == null)
             {
                 return HttpNotFound();
@@ -106,7 +96,7 @@ namespace DukkanSiparisUygulamasi.Controllers
         }
 
         // POST: SunnetSekeriSiparis/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Sil")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

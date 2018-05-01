@@ -8,27 +8,25 @@ using System.Web;
 using System.Web.Mvc;
 using DAL;
 using Entity;
+using static BLL.Repository;
 
 namespace DukkanSiparisUygulamasi.Controllers
 {
     public class DigerSiparisController : Controller
     {
         private SiparisContext db = new SiparisContext();
+        private DigerSiparisRepository DSRep = new DigerSiparisRepository();
 
         // GET: DigerSiparis
         public ActionResult Index()
         {
-            return View(db.DigerSiparisler.ToList());
+            return View(DSRep.GetAll());
         }
 
-        // GET: DigerSiparis/Details/5
-        public ActionResult Details(int? id)
+        // GET: DigerSiparis/Detaylar/5
+        public ActionResult Detaylar(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DigerSiparis digerSiparis = db.DigerSiparisler.Find(id);
+            DigerSiparis digerSiparis = DSRep.GetById(id);
             if (digerSiparis == null)
             {
                 return HttpNotFound();
@@ -36,37 +34,32 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(digerSiparis);
         }
 
-        // GET: DigerSiparis/Create
-        public ActionResult Create()
+        // GET: DigerSiparis/SiparisOlustur
+        public ActionResult SiparisOlustur()
         {
             return View();
         }
 
-        // POST: DigerSiparis/Create
+        // POST: DigerSiparis/SiparisOlustur
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,UrunAdi,Not")] DigerSiparis digerSiparis)
+        public ActionResult SiparisOlustur([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,UrunAdi,Not")] DigerSiparis digerSiparis)
         {
             if (ModelState.IsValid)
             {
-                db.Siparisler.Add(digerSiparis);
-                db.SaveChanges();
+                DSRep.Insert(digerSiparis);
                 return RedirectToAction("Index");
             }
 
             return View(digerSiparis);
         }
 
-        // GET: DigerSiparis/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: DigerSiparis/SiparisDuzenle/5
+        public ActionResult SiparisDuzenle(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DigerSiparis digerSiparis = db.DigerSiparisler.Find(id);
+            DigerSiparis digerSiparis = DSRep.GetById(id);
             if (digerSiparis == null)
             {
                 return HttpNotFound();
@@ -74,30 +67,25 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(digerSiparis);
         }
 
-        // POST: DigerSiparis/Edit/5
+        // POST: DigerSiparis/SiparisDuzenle/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,UrunAdi,Not")] DigerSiparis digerSiparis)
+        public ActionResult SiparisDuzenle([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,UrunAdi,Not")] DigerSiparis digerSiparis)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(digerSiparis).State = EntityState.Modified;
-                db.SaveChanges();
+                DSRep.Update(digerSiparis);
                 return RedirectToAction("Index");
             }
             return View(digerSiparis);
         }
 
-        // GET: DigerSiparis/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: DigerSiparis/Sil/5
+        public ActionResult Sil(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DigerSiparis digerSiparis = db.DigerSiparisler.Find(id);
+            DigerSiparis digerSiparis = DSRep.GetById(id);
             if (digerSiparis == null)
             {
                 return HttpNotFound();
@@ -106,13 +94,11 @@ namespace DukkanSiparisUygulamasi.Controllers
         }
 
         // POST: DigerSiparis/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Sil")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DigerSiparis digerSiparis = db.DigerSiparisler.Find(id);
-            db.Siparisler.Remove(digerSiparis);
-            db.SaveChanges();
+            DSRep.Delete(id);
             return RedirectToAction("Index");
         }
 

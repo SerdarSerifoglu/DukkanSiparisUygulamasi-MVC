@@ -8,27 +8,24 @@ using System.Web;
 using System.Web.Mvc;
 using DAL;
 using Entity;
+using static BLL.Repository;
 
 namespace DukkanSiparisUygulamasi.Controllers
 {
     public class NikahSekeriSiparisController : Controller
     {
         private SiparisContext db = new SiparisContext();
-
+        private NikahSekeriSiparisRepository NSRep = new NikahSekeriSiparisRepository();
         // GET: NikahSekeriSiparis
         public ActionResult Index()
         {
-            return View(db.NikahSekeriSiparisler.ToList());
+            return View(NSRep.GetAll());
         }
 
-        // GET: NikahSekeriSiparis/Details/5
-        public ActionResult Details(int? id)
+        // GET: NikahSekeriSiparis/Detaylar/5
+        public ActionResult Detaylar(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NikahSekeriSiparis nikahSekeriSiparis = db.NikahSekeriSiparisler.Find(id);
+            NikahSekeriSiparis nikahSekeriSiparis = NSRep.GetById(id);
             if (nikahSekeriSiparis == null)
             {
                 return HttpNotFound();
@@ -36,37 +33,32 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(nikahSekeriSiparis);
         }
 
-        // GET: NikahSekeriSiparis/Create
-        public ActionResult Create()
+        // GET: NikahSekeriSiparis/SiparisOlustur
+        public ActionResult SiparisOlustur()
         {
             return View();
         }
 
-        // POST: NikahSekeriSiparis/Create
+        // POST: NikahSekeriSiparis/SiparisOlustur
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,SekerKodu,GelinAdi,DamatAdi,SekerYazisi,Not")] NikahSekeriSiparis nikahSekeriSiparis)
+        public ActionResult SiparisOlustur([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,SekerKodu,GelinAdi,DamatAdi,SekerYazisi,Not")] NikahSekeriSiparis nikahSekeriSiparis)
         {
             if (ModelState.IsValid)
             {
-                db.Siparisler.Add(nikahSekeriSiparis);
-                db.SaveChanges();
+                NSRep.Insert(nikahSekeriSiparis);
                 return RedirectToAction("Index");
             }
 
             return View(nikahSekeriSiparis);
         }
 
-        // GET: NikahSekeriSiparis/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: NikahSekeriSiparis/SiparisDuzenle/5
+        public ActionResult SiparisDuzenle(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NikahSekeriSiparis nikahSekeriSiparis = db.NikahSekeriSiparisler.Find(id);
+            NikahSekeriSiparis nikahSekeriSiparis = NSRep.GetById(id);
             if (nikahSekeriSiparis == null)
             {
                 return HttpNotFound();
@@ -74,30 +66,25 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(nikahSekeriSiparis);
         }
 
-        // POST: NikahSekeriSiparis/Edit/5
+        // POST: NikahSekeriSiparis/SiparisDuzenle/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,SekerKodu,GelinAdi,DamatAdi,SekerYazisi,Not")] NikahSekeriSiparis nikahSekeriSiparis)
+        public ActionResult SiparisDuzenle([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,SekerKodu,GelinAdi,DamatAdi,SekerYazisi,Not")] NikahSekeriSiparis nikahSekeriSiparis)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(nikahSekeriSiparis).State = EntityState.Modified;
-                db.SaveChanges();
+                NSRep.Update(nikahSekeriSiparis);
                 return RedirectToAction("Index");
             }
             return View(nikahSekeriSiparis);
         }
 
-        // GET: NikahSekeriSiparis/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: NikahSekeriSiparis/Sil/5
+        public ActionResult Sil(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NikahSekeriSiparis nikahSekeriSiparis = db.NikahSekeriSiparisler.Find(id);
+            NikahSekeriSiparis nikahSekeriSiparis = NSRep.GetById(id);
             if (nikahSekeriSiparis == null)
             {
                 return HttpNotFound();
@@ -105,14 +92,12 @@ namespace DukkanSiparisUygulamasi.Controllers
             return View(nikahSekeriSiparis);
         }
 
-        // POST: NikahSekeriSiparis/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: NikahSekeriSiparis/Sil/5
+        [HttpPost, ActionName("Sil")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            NikahSekeriSiparis nikahSekeriSiparis = db.NikahSekeriSiparisler.Find(id);
-            db.Siparisler.Remove(nikahSekeriSiparis);
-            db.SaveChanges();
+            NSRep.Delete(id);
             return RedirectToAction("Index");
         }
 

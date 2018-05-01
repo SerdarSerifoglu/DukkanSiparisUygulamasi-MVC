@@ -1,0 +1,120 @@
+﻿@model Entity.DigerSiparis
+
+@{
+    ViewBag.Title = "Diğer Sipariş Silme Ekranı";
+}
+
+<h2>Diğer Sipariş Silme Ekranı</h2>
+
+<h3>Siparişi Silmek istediğinize eminmisiniz?</h3>
+<div>
+    <h4>Diğer Sipariş</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisTuru)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisTuru)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisVerenAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisVerenAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisVerenTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisVerenTel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisVerenEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisVerenEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisAdet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisAdet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeslimTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeslimTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeslimEdildiMi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeslimEdildiMi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisToplamTutari)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisToplamTutari)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisAlan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisAlan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Not)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Not)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Siparişi Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Sipariş Listesine Geri Dön", "Index")
+        </div>
+    }
+</div>

@@ -8,27 +8,27 @@ using System.Web;
 using System.Web.Mvc;
 using DAL;
 using Entity;
+using static BLL.Repository;
 
 namespace DukkanSiparisUygulamasi.Controllers
 {
     public class SunnetDavetiyeSiparisController : Controller
     {
         private SiparisContext db = new SiparisContext();
+        private SunnetDavetiyeSiparisRepository SDSRep = new SunnetDavetiyeSiparisRepository();
+        private DavetiyeKatalogRepository DKRep = new DavetiyeKatalogRepository();
 
         // GET: SunnetDavetiyeSiparis
         public ActionResult Index()
         {
-            return View(db.SunnetDavetiyeSiparisler.ToList());
-        }
+            return View(SDSRep.GetAll());
+        } 
 
         // GET: SunnetDavetiyeSiparis/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Detaylar(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SunnetDavetiyeSiparis sunnetDavetiyeSiparis = db.SunnetDavetiyeSiparisler.Find(id);
+           
+            SunnetDavetiyeSiparis sunnetDavetiyeSiparis = SDSRep.GetById(id);
             if (sunnetDavetiyeSiparis == null)
             {
                 return HttpNotFound();
@@ -37,8 +37,9 @@ namespace DukkanSiparisUygulamasi.Controllers
         }
 
         // GET: SunnetDavetiyeSiparis/Create
-        public ActionResult Create()
+        public ActionResult SiparisOlustur()
         {
+            ViewBag.KatalogId = new SelectList(DKRep.GetAll(), "KatalogId", "KatalogAdi");
             return View();
         }
 
@@ -47,12 +48,12 @@ namespace DukkanSiparisUygulamasi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,DavetiyeKodu,CocugunAdi,CocugunAnneAdi,CocugunAnneSoyadi,CocugunBabaAdi,CocugunBabaSoyadi,DavetiyeYazisi,TorenTarihi,TorenSaati,AdresBilgileri,Not")] SunnetDavetiyeSiparis sunnetDavetiyeSiparis)
+        public ActionResult SiparisOlustur(SunnetDavetiyeSiparis sunnetDavetiyeSiparis)
         {
             if (ModelState.IsValid)
             {
-                db.Siparisler.Add(sunnetDavetiyeSiparis);
-                db.SaveChanges();
+                ViewBag.KatalogId = new SelectList(DKRep.GetAll(), "KatalogId", "KatalogAdi", sunnetDavetiyeSiparis.KatalogId);
+                SDSRep.Insert(sunnetDavetiyeSiparis);
                 return RedirectToAction("Index");
             }
 
@@ -60,13 +61,9 @@ namespace DukkanSiparisUygulamasi.Controllers
         }
 
         // GET: SunnetDavetiyeSiparis/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult SiparisDuzenle(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SunnetDavetiyeSiparis sunnetDavetiyeSiparis = db.SunnetDavetiyeSiparisler.Find(id);
+            SunnetDavetiyeSiparis sunnetDavetiyeSiparis = SDSRep.GetById(id);
             if (sunnetDavetiyeSiparis == null)
             {
                 return HttpNotFound();
@@ -79,25 +76,20 @@ namespace DukkanSiparisUygulamasi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SiparisId,SiparisTuru,SiparisVerenAdi,SiparisVerenTel,SiparisVerenEmail,SiparisAdet,SiparisTarihi,TeslimTarihi,TeslimEdildiMi,SiparisToplamTutari,SiparisAlan,DavetiyeKodu,CocugunAdi,CocugunAnneAdi,CocugunAnneSoyadi,CocugunBabaAdi,CocugunBabaSoyadi,DavetiyeYazisi,TorenTarihi,TorenSaati,AdresBilgileri,Not")] SunnetDavetiyeSiparis sunnetDavetiyeSiparis)
+        public ActionResult SiparisDuzenle(SunnetDavetiyeSiparis sunnetDavetiyeSiparis)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sunnetDavetiyeSiparis).State = EntityState.Modified;
-                db.SaveChanges();
+                SDSRep.Update(sunnetDavetiyeSiparis);
                 return RedirectToAction("Index");
             }
             return View(sunnetDavetiyeSiparis);
         }
 
-        // GET: SunnetDavetiyeSiparis/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: SunnetDavetiyeSiparis/Sil/5
+        public ActionResult Sil(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SunnetDavetiyeSiparis sunnetDavetiyeSiparis = db.SunnetDavetiyeSiparisler.Find(id);
+            SunnetDavetiyeSiparis sunnetDavetiyeSiparis = SDSRep.GetById(id);
             if (sunnetDavetiyeSiparis == null)
             {
                 return HttpNotFound();
@@ -106,13 +98,11 @@ namespace DukkanSiparisUygulamasi.Controllers
         }
 
         // POST: SunnetDavetiyeSiparis/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Sil")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            SunnetDavetiyeSiparis sunnetDavetiyeSiparis = db.SunnetDavetiyeSiparisler.Find(id);
-            db.Siparisler.Remove(sunnetDavetiyeSiparis);
-            db.SaveChanges();
+            SDSRep.Delete(id);
             return RedirectToAction("Index");
         }
 

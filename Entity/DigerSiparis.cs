@@ -13,9 +13,10 @@ namespace Entity
     {
         [Required]
         [MaxLength(50, ErrorMessage = "50 karakterden fazla giriş yapılamaz")]
-        [Display(Name = "Ürün Adı")]
+        [Display(Name = "Ürün Adı:")]
         public string UrunAdi { get; set; }
         [MaxLength(250, ErrorMessage = "250 karakterden fazla giriş yapılamaz")]
+        [Display(Name = "Not:")]
         public string Not { get; set; }
     }
 }

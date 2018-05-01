@@ -80,21 +80,17 @@ namespace DukkanSiparisUygulamasi.Controllers
             if (ModelState.IsValid)
             {
                 ViewBag.KatalogId = new SelectList(DKRep.GetAll(), "KatalogId", "KatalogAdi", davetiyeSiparis.KatalogId);
-                db.Entry(davetiyeSiparis).State = EntityState.Modified;
-                db.SaveChanges();
+                DSRep.Update(davetiyeSiparis);
                 return RedirectToAction("Index");
             }
             return View(davetiyeSiparis);
         }
 
         // GET: DavetiyeSiparis/Sil/5
-        public ActionResult Sil(int? id)
+        public ActionResult Sil(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DavetiyeSiparis davetiyeSiparis = db.DavetiyeSiparisler.Find(id);
+
+            DavetiyeSiparis davetiyeSiparis = DSRep.GetById(id);
             if (davetiyeSiparis == null)
             {
                 return HttpNotFound();
@@ -107,9 +103,7 @@ namespace DukkanSiparisUygulamasi.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DavetiyeSiparis davetiyeSiparis = db.DavetiyeSiparisler.Find(id);
-            db.Siparisler.Remove(davetiyeSiparis);
-            db.SaveChanges();
+            DSRep.Delete(id);
             return RedirectToAction("Index");
         }
 

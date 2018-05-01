@@ -44,7 +44,7 @@ namespace DukkanSiparisUygulamasi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult KatalogOlustur([Bind(Include = "Id,KatalogAdi")] DavetiyeKatalog davetiyeKatalog)
+        public ActionResult KatalogOlustur([Bind(Include = "KatalogId,KatalogAdi")] DavetiyeKatalog davetiyeKatalog)
         {
             if (ModelState.IsValid)
             {
@@ -72,13 +72,12 @@ namespace DukkanSiparisUygulamasi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult KatalogDuzenle([Bind(Include = "Id,KatalogAdi")] DavetiyeKatalog davetiyeKatalog)
+        public ActionResult KatalogDuzenle([Bind(Include = "KatalogId,KatalogAdi")] DavetiyeKatalog davetiyeKatalog)
         {
             if (ModelState.IsValid)
             {
-                DavetiyeKatalog degisenkatalog = DKRep.GetById(davetiyeKatalog.KatalogId);
-                degisenkatalog.KatalogAdi = davetiyeKatalog.KatalogAdi;
-                DKRep.Update(degisenkatalog);
+               
+                DKRep.Update(davetiyeKatalog);
                 return RedirectToAction("Index");
             }
             return View(davetiyeKatalog);
